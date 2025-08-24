@@ -1,0 +1,15 @@
+python -m venv venv
+.\venv\Scripts\Activate
+django-admin startproject automage
+python manage.py startapp jobs
+./manage.py migrate
+
+add 'job' INSTALLED_APPS in automage/settings
+
+"from dotenv import load_dotenv
+load_dotenv()" in automage/settings
+
+add .env
+
+
+https://www.youtube.com/watch?v=IUux4GHLJiQ&t=236s : 10.26
