@@ -11,5 +11,24 @@ load_dotenv()" in automage/settings
 
 add .env
 
+DIRS: os.path.join(BASE_DIR, 'automage/templates'),
 
-https://www.youtube.com/watch?v=IUux4GHLJiQ&t=236s : 10.26
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR,'automage/static'),
+    os.path.join(BASE_DIR,'jobs/static')
+]
+
+LOGIN_URL='/login'
+LOGIN_REDIRECT_URL='/jobs'
+LOGOUT_REDIRECT_URL='/'
+
+scheduler
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_EXTEND_BACKEND = True
+
+
+make migration
+python manage.py makemigrations jobs
+
+https://www.youtube.com/watch?v=IUux4GHLJiQ&t=236s 57:45

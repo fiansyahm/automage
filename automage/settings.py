@@ -58,7 +58,10 @@ ROOT_URLCONF = 'automage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'automage/templates'),
+            os.path.join(BASE_DIR, 'jobs/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,8 +122,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR,'automage/static'),
+    os.path.join(BASE_DIR,'jobs/static')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL='/login'
+LOGIN_REDIRECT_URL='/jobs'
+LOGOUT_REDIRECT_URL='/'
+
+# scheduler
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_EXTEND_BACKEND = True
